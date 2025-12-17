@@ -15,14 +15,12 @@ import type { SettingsCardClassNames } from "../shared/settings-card"
 export interface SessionCellProps {
     className?: string
     classNames?: SettingsCardClassNames
-    key?: string
     localization?: Partial<AuthLocalization>
     session: Session
     refetch?: Refetch
 }
 
 export function SessionCell({
-    key,
     className,
     classNames,
     localization,
@@ -77,7 +75,6 @@ export function SessionCell({
 
     return (
         <Card
-            key={key}
             className={cn(
                 "flex-row items-center gap-3 px-4 py-3",
                 className,
