@@ -31,6 +31,8 @@ export const accountViewPaths = {
     SETTINGS: "settings",
     /** @default "security" */
     SECURITY: "security",
+    /** @default "teams" */
+    TEAMS: "teams",
     /** @default "api-keys" */
     API_KEYS: "api-keys",
     /** @default "organizations" */

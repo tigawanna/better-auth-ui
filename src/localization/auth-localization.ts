@@ -731,6 +731,12 @@ export const authLocalization = {
     /** @default "Teams" */
     TEAMS: "Teams",
 
+    /** @default "Active" */
+    TEAM_ACTIVE: "Active",
+
+    /** @default "Set Active" */
+    TEAM_SET_ACTIVE: "Set Active",
+
     /** @default "Create Team" */
     CREATE_TEAM: "Create Team",
 
@@ -764,6 +770,9 @@ export const authLocalization = {
 
     /** @default "Manage your teams within your organization." */
     TEAMS_DESCRIPTION: "Manage your teams within your organization.",
+
+    /** @default "You are member for following teams." */
+    USER_TEAMS_DESCRIPTION: "You are member for following teams.",
 
     /** @default "Delete Team" */
     DELETE_TEAM: "Delete Team",

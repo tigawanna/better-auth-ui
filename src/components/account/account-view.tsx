@@ -13,6 +13,7 @@ import { AccountSettingsCards } from "../settings/account-settings-cards"
 import { ApiKeysCard } from "../settings/api-key/api-keys-card"
 import { SecuritySettingsCards } from "../settings/security-settings-cards"
 import type { SettingsCardClassNames } from "../settings/shared/settings-card"
+import { UserTeamsCard } from "../settings/teams/user-teams-card"
 import { Button } from "../ui/button"
 import {
     Drawer,
@@ -50,6 +51,7 @@ export function AccountView({
 }: AccountViewProps) {
     const {
         apiKey,
+        teams: teamOptions,
         localization: contextLocalization,
         organization,
         account: accountOptions,
@@ -59,6 +61,7 @@ export function AccountView({
     if (!accountOptions) {
         return null
     }
+    const { enabled: teamsEnabled } = teamOptions || {}
 
     useAuthenticate()
 
@@ -79,6 +82,13 @@ export function AccountView({
         { view: "SETTINGS", label: localization.ACCOUNT },
         { view: "SECURITY", label: localization.SECURITY }
     ]
+
+    if (teamsEnabled) {
+        navItems.push({
+            view: "TEAMS",
+            label: localization.TEAMS
+        })
+    }
 
     if (apiKey) {
         navItems.push({
@@ -190,6 +200,13 @@ export function AccountView({
 
             {view === "SECURITY" && (
                 <SecuritySettingsCards
+                    classNames={classNames}
+                    localization={localization}
+                />
+            )}
+
+            {view === "TEAMS" && (
+                <UserTeamsCard
                     classNames={classNames}
                     localization={localization}
                 />
