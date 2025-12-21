@@ -60,27 +60,10 @@ export function EmailVerificationForm({
 
   localization = { ...contextLocalization, ...localization };
 
-  // Extract email from URL search params
   const email =
     typeof window !== "undefined"
       ? new URLSearchParams(window.location.search).get("email") || ""
       : "";
-
-  // If no email is provided, show error state
-  if (!email) {
-    return (
-      <div className={cn("grid w-full gap-6", className)}>
-        <div className="text-center">
-          <h2 className="text-lg font-semibold text-destructive">
-            Invalid Request
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            {localization.EMAIL_REQUIRED || "Email address is required"}
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   const { onSuccess, isPending: transitionPending } = useOnSuccessTransition({
     redirectTo,
@@ -111,7 +94,6 @@ export function EmailVerificationForm({
     setIsSubmitting?.(form.formState.isSubmitting || transitionPending);
   }, [form.formState.isSubmitting, transitionPending, setIsSubmitting]);
 
-  // Countdown timer for resend
   useEffect(() => {
     if (countdown > 0) {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
@@ -167,7 +149,7 @@ export function EmailVerificationForm({
 
       toast({
         variant: "success",
-        message: localization.EMAIL_VERIFICATION_SUCCESS!,
+        message: localization.EMAIL_OTP_VERIFICATION_SENT!,
       });
     } catch (error) {
       toast({
@@ -181,6 +163,21 @@ export function EmailVerificationForm({
       setResendDisabled(false);
       setCountdown(0);
     }
+  }
+
+  if (!email) {
+    return (
+      <div className={cn("grid w-full gap-6", className)}>
+        <div className="text-center">
+          <h2 className="text-lg font-semibold text-destructive">
+            Invalid Request
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            {localization.EMAIL_REQUIRED || "Email address is required"}
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (

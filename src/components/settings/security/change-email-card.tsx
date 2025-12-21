@@ -109,7 +109,7 @@ export function ChangeEmailCard({
 
             toast({
                 variant: "success",
-                message: localization.EMAIL_VERIFICATION!
+                message: localization.EMAIL_VERIFY_CHANGE!
             })
         } catch (error) {
             toast({
