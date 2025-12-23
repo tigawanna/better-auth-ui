@@ -268,7 +268,7 @@ export type AuthUIProviderProps = {
     viewPaths?: Partial<AuthViewPaths>
     /**
      * Email verification configuration
-     * @default true
+     * @default undefined
      */
     emailVerification?: boolean | Partial<EmailVerificationOptions>
     /**
